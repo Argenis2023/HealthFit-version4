@@ -1,20 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content class="ion-padding">
+  <ion-card>
+    <img src="https://i.imgur.com/efw9usT.jpeg" />
+    <ion-card-header>
+      <ion-card-title class="text-center">¡Bienvenido a HealthFit!</ion-card-title>
+    </ion-card-header>  
+    <ion-card-content class="text-justify">
+      Descubre tu mejor versión con nuestras guías de ejercicio y alimentación
+      saludable. Estamos aquí para ayudarte a alcanzar tus metas de bienestar físico
+      y mental, con entrenamientos y recetas que te harán sentir en forma y lleno de
+      energía.
+      <br><br>
+      <p class="text-justify">
+        ¿Quieres comenzar ahora? Ve al menú y presiona la sección "Tu cuerpo" 💪😊
+      </p><br>
+      <div *ngIf="clima" class="fade-slide-in">
+        <p class="text-center">¡NO OLVIDES PROTEGERTE DEL CLIMA!</p><br>
+        <p>Ciudad: {{ clima.location.name }}🏙️</p>
+        <p>Temperatura: {{ clima.current.temp_c }}°C🌡️</p>
+        <p>Viento: {{ clima.current.wind_kph }} km/h🍃</p>
+        <p>Clima: {{ clima.current.condition.text }}</p>
+        <img [src]="'https:' + clima.current.condition.icon" alt="Ícono del clima" />
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

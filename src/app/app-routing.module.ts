@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'cuerpo',
+    loadChildren: () => import('./pages/cuerpo/cuerpo.module').then( m => m.CuerpoPageModule)
+  },
+  {
+    path: 'receta',
+    loadChildren: () => import('./pages/receta/receta.module').then( m => m.RecetaPageModule)
+  },
+  {
+    path: 'entrenamiento',
+    loadChildren: () => import('./pages/entrenamiento/entrenamiento.module').then( m => m.EntrenamientoPageModule)
+  },
 ];
 
 @NgModule({

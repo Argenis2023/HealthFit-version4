@@ -1,0 +1,34 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content color="light" class="ion-padding">
+    <ion-list>
+      <ion-item routerLink="/home">
+        <ion-label color="success">Inicio 🏠</ion-label>
+      </ion-item>
+      <ion-item routerLink="/cuerpo">
+        <ion-label color="success">Tu cuerpo 💪</ion-label>
+      </ion-item>
+      <ion-item routerLink="/entrenamiento">
+        <ion-label color="success">Entrenamiento 👟</ion-label>
+      </ion-item>
+      <ion-item routerLink="/receta">
+        <ion-label color="success">Recetas 🥗</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar class="custom-content">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>HealthFit 🏋🏻🏋🏿‍♂️</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</div>

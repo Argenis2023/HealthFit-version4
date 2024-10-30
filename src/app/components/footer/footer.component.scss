@@ -1,0 +1,37 @@
+ion-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.animated-footer {
+  animation: slideAndFade 20000ms infinite;
+}
+
+.custom-content {
+  --background: #a3e4d7;
+}
+  
+@keyframes slideAndFade {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(100%);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateX(-100%);
+    opacity: 0.2;
+  }
+  75% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

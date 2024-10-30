@@ -1,27 +1,57 @@
-#container {
+/* Ajuste del contenedor principal */
+ion-content {
+  --padding-bottom: 60px; /* Espacio para no superponerse al footer */
+  --padding-top: 56px; /* Espacio para no superponerse al menú superior */
+}
+
+/* Botón personalizado */
+.custom-button {
+  --background: #a3e4d7;
+  --background-hover: #82d6c2;
+  --background-activated: #65c5af;
+  --color: white; 
+}
+
+/* Centramos y justificamos texto */
+.text-center {
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.text-justify {
+  text-align: justify;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+/* Estilos para la carta */
+ion-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 16px; /* Espacio alrededor de la carta */
+  padding: 16px; /* Relleno interno para mejorar la legibilidad */
 }
 
-#container a {
-  text-decoration: none;
+/* Título de la carta */
+ion-card-title {
+  font-size: 1.4rem;
+  font-weight: bold;
 }
+
+/* Animación de deslizamiento */
+.fade-slide-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 3.5s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
