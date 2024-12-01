@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClimaService, Clima } from '../service/clima.service';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-home',
@@ -7,28 +8,36 @@ import { ClimaService, Clima } from '../service/clima.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  clima!: Clima; 
-  nombreCiudad: string = 'Santiago'; 
+  clima!: Clima;
 
   constructor(private climaService: ClimaService) {}
 
   ngOnInit(): void {
-    const climaGuardado = localStorage.getItem('clima');
-    if (climaGuardado) {
-      console.log('Clima cargado desde el localStorage');
-      this.clima = JSON.parse(climaGuardado);
-    } else {
-      this.climaService.obtenerClima(this.nombreCiudad).subscribe((data: Clima) => {
-          this.clima = data;
-          console.log('Clima obtenido desde la API');
-          localStorage.setItem('clima', JSON.stringify(this.clima));
-        },
-        (error: any) => {
-          console.error('Error obteniendo datos del clima', error);
-        }
-      );
+    this.obtenerUbicacion(); // Llama al método para obtener la ubicación.
+  }
+
+  async obtenerUbicacion(): Promise<void> {
+    try {
+      // Solicita la ubicación actual del dispositivo
+      const position = await Geolocation.getCurrentPosition();
+      const lat = position.coords.latitude; // Obtiene la latitud
+      const lon = position.coords.longitude; // Obtiene la longitud
+      this.obtenerClima(lat, lon); // Llama al método para obtener el clima con las coordenadas
+    } catch (error) {
+      console.error('Error al obtener la ubicación', error);
     }
   }
+
+  obtenerClima(lat: number, lon: number): void {
+    // Llama al servicio para obtener los datos del clima
+    this.climaService.obtenerClimaPorCoordenadas(lat, lon).subscribe(
+      (data: Clima) => {
+        this.clima = data; // Almacena los datos del clima en la propiedad `clima`
+        console.log('Clima obtenido:', data);
+      },
+      (error) => {
+        console.error('Error al obtener datos del clima', error);
+      }
+    );
+  }
 }
-
-
